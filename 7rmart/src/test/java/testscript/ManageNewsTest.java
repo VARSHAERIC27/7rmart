@@ -11,11 +11,11 @@ public class ManageNewsTest extends Base {
 	public void verifyTheUserIsAbleToCreateNews() {
 		String username = "admin";
 		String password = "admin";
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickOnSignInButton();
+
 		ManageNewsPage managenewspage = new ManageNewsPage(driver);
+		managenewspage.enterUsernameOnUsernameField(username);
+		managenewspage.enterPasswordOnPasswordField(password);
+		managenewspage.clickOnSignInButton();
 		managenewspage.clickOnMoreinfoField();
 		managenewspage.clickOnsNewField();
 		managenewspage.enterTheNewsOnEnterNewsField();

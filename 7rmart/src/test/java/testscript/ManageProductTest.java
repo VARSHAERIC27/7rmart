@@ -11,11 +11,11 @@ public class ManageProductTest extends Base {
 	public void verifyTheUserIsAbleToDeleteTheProduct() {
 		String username = "admin";
 		String password = "admin";
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickOnSignInButton();
+
 		ManageProductPage manageproductpage = new ManageProductPage(driver);
+		manageproductpage.enterUsernameOnUsernameField(username);
+		manageproductpage.enterPasswordOnPasswordField(password);
+		manageproductpage.clickOnSignInButton();
 		manageproductpage.clickOnManageProductField();
 		manageproductpage.clickOnDeleteField();
 		boolean isalertfielddisplayed = manageproductpage.isAlertFieldDisplayed();
