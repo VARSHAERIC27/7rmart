@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+
 public class ManageContactPage {
 	WebDriver driver;
 
@@ -21,7 +23,7 @@ public class ManageContactPage {
 	WebElement passwordField;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signinField;
-	@FindBy(xpath = "(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact'])[2]")
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='nav-link']")
 	WebElement moreinfoField;
 	@FindBy(xpath = "//i[@class='fas fa-edit']//parent::a")
 	WebElement actionField;
@@ -53,8 +55,10 @@ public class ManageContactPage {
 	}
 
 	public void clickOnMoreinfoField() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();", moreinfoField);
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaSriptClick(driver, moreinfoField);
+
+		
 		//moreinfoField.click();
 	}
 
@@ -62,36 +66,40 @@ public class ManageContactPage {
 		actionField.click();
 	}
 
-	public void enterPhoneNumberOnPhoneField() {
-		phoneField.sendKeys("1234567");
+	public void enterPhoneNumberOnPhoneField(String phone) {
+		phoneField.sendKeys(phone);
 
 	}
 
-	public void enterEmailOnEmailField() {
-		EmailField.sendKeys("abcn@gmail.com");
+	public void enterEmailOnEmailField(String email) {
+		EmailField.sendKeys(email);
 
 	}
 
-	public void enterAddressOnAddressField() {
-		addressField.sendKeys("youth nagar,kerala");
+	public void enterAddressOnAddressField(String address) {
+		addressField.sendKeys(address);
 	}
 
-	public void enterDeliveryTimeOnDeliveryTimeField() {
-		deliverytimeField.sendKeys("5 pm");
+	public void enterDeliveryTimeOnDeliveryTimeField(String time) {
+		deliverytimeField.sendKeys(time);
 	}
 
-	public void enterDeliverychargelimitOnDeliverychargelimitField() {
-		deliverychargelimitField.sendKeys("100");
+	public void enterDeliverychargelimitOnDeliverychargelimitField(String charge) {
+		deliverychargelimitField.sendKeys(charge);
 	}
 
 	public void clickOnupdateField() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();",updateField );
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaSriptClick(driver, updateField);
+
+		
 		//updateField.click();
 	}
 
 	public boolean isAlertFieldDisplayed() {
-		return alertField.isDisplayed();
+		PageUtility pageutility=new PageUtility();
+		return pageutility.isAnElementDisplayed(alertField);
+
 	}
 	public void clearThePhoneField() {
 		phoneField.clear();

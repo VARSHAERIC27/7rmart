@@ -1,10 +1,13 @@
 package pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import utilities.PageUtility;
 
 public class AdminUserPage {
 	WebDriver driver;
@@ -48,24 +51,27 @@ public class AdminUserPage {
 	}
 
 	public void clickOnMoreinfoField() {
-		MoreInfoField.click();
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaSriptClick(driver, MoreInfoField);
+		
+		//MoreInfoField.click();
 	}
 
 	public void clickOnNewField() {
 		newField.click();
 	}
 
-	public void enterUserNameOnAdminUsernameField() {
-		adminusernameField.sendKeys("ERIC Thomas C");
+	public void enterUserNameOnAdminUsernameField(String adminusername) {
+		adminusernameField.sendKeys(adminusername);
 	}
 
-	public void enterPasswordOnAdminPasswordField() {
-		adminpasswordField.sendKeys("9876");
+	public void enterPasswordOnAdminPasswordField(String adminpassword) {
+		adminpasswordField.sendKeys(adminpassword);
 	}
 
 	public void selectUserTypeField() {
-		Select user = new Select(usertypeField);
-		user.selectByIndex(1);
+		PageUtility pageutility=new PageUtility();
+		pageutility.selectByIndex(usertypeField, 1);
 
 	}
 
@@ -74,6 +80,8 @@ public class AdminUserPage {
 	}
 
 	public boolean isAlertfieldDisplayed() {
-		return AlertField.isDisplayed();
+		PageUtility pageutility=new PageUtility();
+		return  pageutility.isAnElementDisplayed(AlertField);
+		
 	}
 }

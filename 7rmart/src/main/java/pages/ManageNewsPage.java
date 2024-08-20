@@ -10,6 +10,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+
 public class ManageNewsPage {
 	WebDriver driver;
 
@@ -24,9 +26,9 @@ public class ManageNewsPage {
 	WebElement passwordField;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signinField;
-	@FindBy(xpath = "(//i[@class='fas fa-arrow-circle-right']//parent::a)[10]")
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")
 	WebElement moreinfoField;
-	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger' and @onclick='click_button(1)']")
 	WebElement NewField;
 	@FindBy(xpath = "//textarea[@id='news']")
 	WebElement EnterNewsField;
@@ -47,16 +49,19 @@ public class ManageNewsPage {
 	}
 
 	public void clickOnMoreinfoField() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();", moreinfoField);
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaScriptScroll(driver);
+		pageutility.javaScriptScrollToEnd(driver);
+		pageutility.javaSriptClick(driver, moreinfoField);
+		
 	}
 
 	public void clickOnsNewField() {
 		NewField.click();
 	}
 
-	public void enterTheNewsOnEnterNewsField() {
-		EnterNewsField.sendKeys("wayanad landslides");
+	public void enterTheNewsOnEnterNewsField(String news) {
+		EnterNewsField.sendKeys(news);
 	}
 
 	public void clickOnSaveField() {
@@ -64,7 +69,8 @@ public class ManageNewsPage {
 	}
 
 	public boolean isAlertFieldDisplayed() {
-		return alertField.isDisplayed();
+		PageUtility pageutility=new PageUtility();
+		return pageutility.isAnElementDisplayed(alertField);
 	}
 
 }

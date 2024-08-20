@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+
 public class LoginPage {
 	WebDriver driver;
 
@@ -38,11 +40,16 @@ public class LoginPage {
 	}
 
 	public boolean isHomePageLoaded() {
-		return adminimageField.isDisplayed();
+		PageUtility pageutility=new PageUtility();
+		return pageutility.isAnElementDisplayed(adminimageField);
+
 	}
 
 	public boolean isAlertFieldDisplayed() {
-		return alertField.isDisplayed();
+		PageUtility pageutility=new PageUtility();
+		return pageutility.isAnElementDisplayed(alertField);
+
+
 	}
 
 }

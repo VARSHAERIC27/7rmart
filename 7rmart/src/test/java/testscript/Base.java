@@ -1,5 +1,7 @@
 package testscript;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -13,11 +15,12 @@ public class Base {
 		driver = new ChromeDriver();
 		driver.get("https://groceryapp.uniqassosiates.com/admin/login");
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
-	//@AfterMethod
+	@AfterMethod
 	public void quitAndClose() {
-	//	driver.quit();
+		//driver.quit();
 	}
 
 }

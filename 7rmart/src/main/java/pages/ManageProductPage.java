@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+
 public class ManageProductPage {
 	WebDriver driver;
 
@@ -18,7 +20,7 @@ public class ManageProductPage {
 	WebElement passwordField;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signinField;
-	@FindBy(xpath = "(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-product'])[1]")
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-product' and @class='small-box-footer']")
 	WebElement manageproductField;
 	@FindBy(xpath = "(//a[@class='btn btn-sm btn btn-danger btncss'])[1]")
 	WebElement deleteField;
@@ -36,15 +38,22 @@ public class ManageProductPage {
 	}
 
 	public void clickOnManageProductField() {
-		manageproductField.click();
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaScriptScrollToEnd(driver);
+		pageutility.javaSriptClick(driver, manageproductField);
+		//manageproductField.click();
 	}
 
 	public void clickOnDeleteField() {
 		deleteField.click();
-		driver.switchTo().alert().accept();
+		PageUtility pageutility=new PageUtility();
+		pageutility.acceptAlert(driver);
 	}
 
 	public boolean isAlertFieldDisplayed() {
-		return alertField.isDisplayed();
+		PageUtility pageutility=new PageUtility();
+		return pageutility.isAnElementDisplayed(alertField);
+
+		
 	}
 }
