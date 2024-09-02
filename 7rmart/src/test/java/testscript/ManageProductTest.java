@@ -10,7 +10,7 @@ import pages.ManageProductPage;
 import utilities.ExcelUtility;
 
 public class ManageProductTest extends Base {
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToDeleteTheProduct")
 	public void verifyTheUserIsAbleToDeleteTheProduct() throws IOException {
 		//String username = "admin";
 		//String password = "admin";

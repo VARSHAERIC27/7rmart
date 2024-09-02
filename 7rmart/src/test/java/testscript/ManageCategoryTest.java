@@ -9,7 +9,7 @@ import pages.ManageCategoryPage;
 import utilities.ExcelUtility;
 
 public class ManageCategoryTest extends Base{
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToAddNewCategory")
 	public void verifyTheUserIsAbleToAddNewCategory() throws IOException {
 		String username=ExcelUtility.getStringData(1, 0, "LoginPage");
 	    String password=ExcelUtility.getStringData(1, 1, "LoginPage");

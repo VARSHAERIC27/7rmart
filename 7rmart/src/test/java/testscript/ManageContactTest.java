@@ -9,7 +9,7 @@ import pages.ManageContactPage;
 import utilities.ExcelUtility;
 
 public class ManageContactTest extends Base {
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToUpdateContact")
 	public void verifyTheUserIsAbleToUpdateContact() throws IOException {
 		//String username="admin";
 		//String password="admin";

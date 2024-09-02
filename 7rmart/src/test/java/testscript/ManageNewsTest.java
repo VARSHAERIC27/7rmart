@@ -10,7 +10,7 @@ import pages.ManageNewsPage;
 import utilities.ExcelUtility;
 
 public class ManageNewsTest extends Base {
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToCreateNews")
 	public void verifyTheUserIsAbleToCreateNews() throws IOException {
 		//String username = "admin";
 		//String password = "admin";

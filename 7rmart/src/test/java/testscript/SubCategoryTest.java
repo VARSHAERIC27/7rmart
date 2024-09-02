@@ -10,7 +10,7 @@ import pages.SubCategoryPage;
 import utilities.ExcelUtility;
 
 public class SubCategoryTest extends Base {
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToChangeTheStatus")
 	public void verifyTheUserIsAbleToChangeTheStatus() throws IOException {
 		//String username="admin";
 		//String password="admin";
@@ -25,7 +25,7 @@ public class SubCategoryTest extends Base {
 		boolean isalertfielddisplayed=subcategorypage.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertfielddisplayed, "alert is not displayed when user click on statusfield");
 	}
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToAddNewSubCategory")
 	public void verifyTheUserIsAbleToAddNewSubCategory() throws IOException  {
 		//String username="admin";
 		//String password="admin";

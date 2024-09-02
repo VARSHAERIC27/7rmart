@@ -9,7 +9,7 @@ import pages.ManageFooterTextPage;
 import utilities.ExcelUtility;
 
 public class ManageFooterTextTest extends Base {
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToUpdateFooterText")
 	public void verifyTheUserIsAbleToUpdateFooterText() throws IOException  {
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");

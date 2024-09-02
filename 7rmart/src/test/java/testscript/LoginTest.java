@@ -5,13 +5,14 @@ import static org.testng.Assert.assertTrue;
 import java.io.IOException;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base {
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class, description="verifyTheUserIsAbleToLoginUsingValidCredential",groups= {"Regression"})
 	public void verifyTheUserIsAbleToLoginUsingValidCredential() throws IOException {
 
 		//String username = "admin";
@@ -28,7 +29,7 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToLoginUsingInvalidUsername",groups= {"Smoke"})
 	public void verifyTheUserIsAbleToLoginUsingInvalidUsername() throws IOException {
 		//String username = "varsha";
 		//String password = "admin";
@@ -43,7 +44,7 @@ public class LoginTest extends Base {
 		Assert.assertTrue(isalertFieldDisplayed, "alert is not displayed when user enter invalid username");
 	}
 
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToLoginUsingInvalidPassword")
 	public void verifyTheUserIsAbleToLoginUsingInvalidPassword() throws IOException {
 		//String username = "admin";
 		//String password = "adm";
@@ -59,12 +60,12 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test
-	public void verifyTheUserIsAbleToLoginUsingInvalidCredential() throws IOException {
+	@Test(dataProvider="LOGINPROVIDER",retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToLoginUsingInvalidCredential")
+	public void verifyTheUserIsAbleToLoginUsingInvalidCredential(String username,String password) throws IOException {
 		//String username = "admi";
 		//String password = "adm";
-		String username=ExcelUtility.getStringData(3, 0, "LoginPage");
-		String password=ExcelUtility.getStringData(3, 1, "LoginPage");
+		//String username=ExcelUtility.getStringData(3, 0, "LoginPage");
+		//String password=ExcelUtility.getStringData(3, 1, "LoginPage");
 
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUsernameOnUsernameField(username);
@@ -74,4 +75,12 @@ public class LoginTest extends Base {
 		Assert.assertTrue(isalertFieldDisplayed, "alert is not displayed when user enter invalid credentials");
 
 	}
+	@DataProvider(name="LOGINPROVIDER")
+		public Object[][] getDataFromTestData() throws IOException{
+			return new Object[][] {{
+				ExcelUtility.getStringData(3, 0, "LoginPage"),ExcelUtility.getStringData(3, 1, "LoginPage")},};
+				
+			
+		}
 }
+

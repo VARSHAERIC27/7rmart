@@ -9,7 +9,7 @@ import pages.AdminUserPage;
 import utilities.ExcelUtility;
 
 public class AdminUserTest extends Base {
-	@Test
+	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToAddNewAdminUser")
 	public void verifyTheUserIsAbleToAddNewAdminUser() throws IOException  {
 		//String usename = "admin";
 	//	String password = "admin";
