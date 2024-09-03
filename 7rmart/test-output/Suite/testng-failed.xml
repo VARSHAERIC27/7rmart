@@ -7,13 +7,13 @@
   </listeners>
   <test thread-count="5" name="TestNG.xml(failed)">
     <classes>
-      <class name="testscript.LogOutTest">
+      <class name="testscript.LoginTest">
         <methods>
           <include name="initiliseBrowser"/>
+          <include name="verifyTheUserIsAbleToLoginUsingInvalidCredential"/>
           <include name="browserQuit"/>
-          <include name="verifyTheUserIsAbleToLogOut"/>
         </methods>
-      </class> <!-- testscript.LogOutTest -->
+      </class> <!-- testscript.LoginTest -->
     </classes>
   </test> <!-- TestNG.xml(failed) -->
 </suite> <!-- Failed suite [Suite] -->
