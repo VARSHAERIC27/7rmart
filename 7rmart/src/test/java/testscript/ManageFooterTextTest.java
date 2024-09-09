@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constants.Constants;
+import pages.LoginPage;
 import pages.ManageFooterTextPage;
 import utilities.ExcelUtility;
 
@@ -16,11 +18,11 @@ public class ManageFooterTextTest extends Base {
 		String address = ExcelUtility.getStringData(1, 0, "ManageFooterPage");
 		String email = ExcelUtility.getStringData(1, 1, "ManageFooterPage");
 		String phone = ExcelUtility.getIntegerData(1, 2, "ManageFooterPage");
-
+		LoginPage loginPage=new LoginPage(driver);
+	    loginPage.enterUsernameOnUsernameField(username);
+	    loginPage.enterPasswordOnPasswordField(password);
+	    loginPage.clickOnSignInButton();
 		ManageFooterTextPage managefootertextpage = new ManageFooterTextPage(driver);
-		managefootertextpage.enterUsernameOnUsernameField(username);
-		managefootertextpage.enterPasswordOnPasswordField(password);
-		managefootertextpage.clickOnSignInButton();
 		managefootertextpage.clickOnMoreinfoField();
 		managefootertextpage.clickOnActionField();
 		managefootertextpage.clearTheAddressField();
@@ -31,7 +33,7 @@ public class ManageFooterTextTest extends Base {
 		managefootertextpage.enterPhoneOnPhoneField(phone);
 		managefootertextpage.clickOnUpdateField();
 		boolean isalertFieldDisplayed = managefootertextpage.isAlertFieldDisplayed();
-		Assert.assertTrue(isalertFieldDisplayed, "alert not displayed");
+		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertMessage);
 
 	}
 

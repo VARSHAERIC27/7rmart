@@ -6,49 +6,53 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constants.Constants;
+import pages.LoginPage;
 import pages.SubCategoryPage;
 import utilities.ExcelUtility;
 
 public class SubCategoryTest extends Base {
-	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToChangeTheStatus")
+	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToChangeTheStatus")
 	public void verifyTheUserIsAbleToChangeTheStatus() throws IOException {
-		//String username="admin";
-		//String password="admin";
-		String username=ExcelUtility.getStringData(1, 0, "LoginPage");
-	    String password=ExcelUtility.getStringData(1, 1, "LoginPage");
-		SubCategoryPage subcategorypage=new SubCategoryPage(driver);
-		subcategorypage.enterUsernameOnUsernameField(username);
-		subcategorypage.enterPasswordOnPasswordField(password);
-		subcategorypage.clickOnSignInButton();
+		// String username="admin";
+		// String password="admin";
+		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
+		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.enterUsernameOnUsernameField(username);
+		loginPage.enterPasswordOnPasswordField(password);
+		loginPage.clickOnSignInButton();
+		SubCategoryPage subcategorypage = new SubCategoryPage(driver);
+
 		subcategorypage.clickOnMoreInfoField();
 		subcategorypage.clickOnStatusField();
-		boolean isalertfielddisplayed=subcategorypage.isAlertFieldDisplayed();
-		Assert.assertTrue(isalertfielddisplayed, "alert is not displayed when user click on statusfield");
+		boolean isalertfielddisplayed = subcategorypage.isAlertFieldDisplayed();
+		Assert.assertTrue(isalertfielddisplayed, Constants.AlertForSubCategory);
 	}
-	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToAddNewSubCategory")
-	public void verifyTheUserIsAbleToAddNewSubCategory() throws IOException  {
-		//String username="admin";
-		//String password="admin";
-		//String subcategory="goldFanfast";
-		String username=ExcelUtility.getStringData(1, 0, "LoginPage");
-	    String password=ExcelUtility.getStringData(1, 1, "LoginPage");	
-	    String subcategory=ExcelUtility.getStringData(1, 0, "SubCategoryPage");
-		
-		SubCategoryPage subcategorynewPage=new SubCategoryPage(driver);
-		subcategorynewPage.enterUsernameOnUsernameField(username);
-		subcategorynewPage.enterPasswordOnPasswordField(password);
-		subcategorynewPage.clickOnSignInButton();
+
+	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToAddNewSubCategory")
+	public void verifyTheUserIsAbleToAddNewSubCategory() throws IOException {
+		// String username="admin";
+		// String password="admin";
+		// String subcategory="goldFanfast";
+		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
+		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
+		String subcategory = ExcelUtility.getStringData(1, 0, "SubCategoryPage");
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.enterUsernameOnUsernameField(username);
+		loginPage.enterPasswordOnPasswordField(password);
+		loginPage.clickOnSignInButton();
+		SubCategoryPage subcategorynewPage = new SubCategoryPage(driver);
 		subcategorynewPage.clickOnMoreInfoField();
 		subcategorynewPage.clickOnNewField();
 		subcategorynewPage.selectOncategoryField();
 		subcategorynewPage.enterSubcategoryOnSubCategoryField(subcategory);
 		subcategorynewPage.chooseFileOnImageField();
-		//PageUtility pageutility=new PageUtility();
-		//pageutility.javaSriptClick(driver, saveField);
-        subcategorynewPage.clickOnSaveField();
-		boolean isAlertFieldDisplayed=subcategorynewPage.isAlertFieldDisplayed();
-		Assert.assertTrue(isAlertFieldDisplayed, "alert not displayed");
-	
+		// PageUtility pageutility=new PageUtility();
+		// pageutility.javaSriptClick(driver, saveField);
+		subcategorynewPage.clickOnSaveField();
+		boolean isAlertFieldDisplayed = subcategorynewPage.isAlertFieldDisplayed();
+		Assert.assertTrue(isAlertFieldDisplayed, Constants.AlertMessage);
 
-}
+	}
 }

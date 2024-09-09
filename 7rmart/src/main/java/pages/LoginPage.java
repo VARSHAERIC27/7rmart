@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import utilities.PageUtility;
+import utilities.WaitUtility;
 
 public class LoginPage {
 	WebDriver driver;
@@ -27,16 +28,21 @@ public class LoginPage {
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
 	WebElement alertField;
 
-	public void enterUsernameOnUsernameField(String username) {
+	public LoginPage enterUsernameOnUsernameField(String username) {
 		usernameField.sendKeys(username);
+		return this;
 	}
 
-	public void enterPasswordOnPasswordField(String password) {
+	public LoginPage enterPasswordOnPasswordField(String password) {
 		passwordField.sendKeys(password);
+		return this;
 	}
 
-	public void clickOnSignInButton() {
+	public  LoginPage clickOnSignInButton() {
+		WaitUtility waitutility=new WaitUtility();
+		waitutility.waitForElementToBeClickable(driver, signinField);
 		signinField.click();
+		return this;
 	}
 
 	public boolean isHomePageLoaded() {

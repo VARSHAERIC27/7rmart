@@ -5,27 +5,26 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constants.Constants;
 import pages.LogOutPage;
+import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LogOutTest extends Base {
-	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToLogOut",groups= {"Regression"})
+	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToLogOut", groups = { "Regression" })
 	public void verifyTheUserIsAbleToLogOut() throws IOException {
-		String username=ExcelUtility.getStringData(1, 0, "LoginPage");
-	    String password=ExcelUtility.getStringData(1, 1, "LoginPage");
-	    LogOutPage logoutpage=new LogOutPage(driver);
-	    logoutpage.enterUsernameOnUsernameField(username);
-	    logoutpage.enterPasswordOnPasswordField(password);
-	    logoutpage.clickOnSignInButton();
-	    logoutpage.clickOnAdminImageField();
-	    //logoutpage.clickOnSignInButton();
+		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
+		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.enterUsernameOnUsernameField(username);
+		loginPage.enterPasswordOnPasswordField(password);
+		loginPage.clickOnSignInButton();
+		LogOutPage logoutpage = new LogOutPage(driver);
+		logoutpage.clickOnAdminImageField();
+		logoutpage.clickOnLogOutField();
+		String logintext = logoutpage.getTextFromLogOutField();
+		Assert.assertEquals(logintext, Constants.AlertMessageForLogOut);
 
-	    //logoutpage.clickOnSettingsField();
-	    logoutpage.clickOnLogOutField();
-	  String logintext=  logoutpage.getTextFromLogOutField();
-	  Assert.assertEquals(logintext, "Sign in to start your session");
-	  	
-		
 	}
 
 }

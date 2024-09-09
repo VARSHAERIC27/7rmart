@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import constants.Constants;
 import utilities.FileUploadUtility;
 import utilities.PageUtility;
+import utilities.WaitUtility;
 
 public class ManageCategoryPage {
 	WebDriver driver;
@@ -17,12 +18,7 @@ public class ManageCategoryPage {
 		PageFactory.initElements(driver, this);
 
 	}
-	@FindBy(xpath = "//input[@name='username']")
-	WebElement usernameField;
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement passwordField;
-	@FindBy(xpath = "//button[@type='submit']")
-	WebElement signinField;
+	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='nav-link']")
 	WebElement moreinfoField;
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger' and @onclick='click_button(1)']")
@@ -43,17 +39,7 @@ public class ManageCategoryPage {
 	WebElement savefield;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	WebElement alertField;
-	public void enterUsernameOnUsernameField(String username) {
-		usernameField.sendKeys(username);
-	}
-
-	public void enterPasswordOnPasswordField(String password) {
-		passwordField.sendKeys(password);
-	}
-
-	public void clickOnSignInButton() {
-		signinField.click();
-	}
+	
 
 	public void clickOnMoreinfoField() {
 		PageUtility pageutility=new PageUtility();
@@ -95,6 +81,8 @@ public class ManageCategoryPage {
 	}
 	public boolean isAlertFieldDisplayed() {
 		PageUtility pageutility=new PageUtility();
+		WaitUtility waitutility=new WaitUtility();
+		waitutility.waitForAlertToBeVisible(driver);
 		return pageutility.isAnElementDisplayed(alertField);
 
 	}

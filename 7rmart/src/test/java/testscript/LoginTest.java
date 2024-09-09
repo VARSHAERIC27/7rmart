@@ -8,79 +8,63 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import constants.Constants;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base {
-	@Test(retryAnalyzer=retry.Retry.class, description="verifyTheUserIsAbleToLoginUsingValidCredential",groups= {"Regression"})
+	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToLoginUsingValidCredential", groups = {
+			"Regression" })
 	public void verifyTheUserIsAbleToLoginUsingValidCredential() throws IOException {
 
-		//String username = "admin";
-		//String password = "admin";
-		String username=ExcelUtility.getStringData(1, 0, "LoginPage");
-		String password=ExcelUtility.getStringData(1, 1, "LoginPage");
+		// String username = "admin";
+		// String password = "admin";
+		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
+		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickOnSignInButton();
-
+		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnSignInButton();
 		boolean ishomePageloaded = loginpage.isHomePageLoaded();
-		assertTrue(ishomePageloaded, "home page is not loaded when user enter valid credentials");
+		assertTrue(ishomePageloaded, Constants.ErrormessageForLogin);
 
 	}
 
-	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToLoginUsingInvalidUsername",groups= {"Smoke"})
+	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToLoginUsingInvalidUsername", groups = {
+			"Smoke" })
 	public void verifyTheUserIsAbleToLoginUsingInvalidUsername() throws IOException {
-		//String username = "varsha";
-		//String password = "admin";
-		String username=ExcelUtility.getStringData(2, 0,"LoginPage" );
-		String password=ExcelUtility.getStringData(2, 1, "LoginPage");
+		// String username = "varsha";
+		// String password = "admin";
+		String username = ExcelUtility.getStringData(2, 0, "LoginPage");
+		String password = ExcelUtility.getStringData(2, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickOnSignInButton();
-
+		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnSignInButton();
 		boolean isalertFieldDisplayed = loginpage.isAlertFieldDisplayed();
-		Assert.assertTrue(isalertFieldDisplayed, "alert is not displayed when user enter invalid username");
+		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertMessageForLogin);
 	}
 
-	@Test(retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToLoginUsingInvalidPassword")
+	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToLoginUsingInvalidPassword")
 	public void verifyTheUserIsAbleToLoginUsingInvalidPassword() throws IOException {
-		//String username = "admin";
-		//String password = "adm";
-		String username=ExcelUtility.getStringData(3, 0, "LoginPage");
-		String password=ExcelUtility.getStringData(3, 1, "LoginPage");
-
+		// String username = "admin";
+		// String password = "adm";
+		String username = ExcelUtility.getStringData(3, 0, "LoginPage");
+		String password = ExcelUtility.getStringData(3, 1, "LoginPage");
 		LoginPage lpage = new LoginPage(driver);
-		lpage.enterUsernameOnUsernameField(username);
-		lpage.enterPasswordOnPasswordField(password);
-		lpage.clickOnSignInButton();
+		lpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnSignInButton();
 		boolean isalertFieldDisplayed = lpage.isAlertFieldDisplayed();
-		Assert.assertTrue(isalertFieldDisplayed, "alert is not displayed when user enter invalid password");
-
+		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertMessageForLogin);
 	}
 
-	@Test(dataProvider="LOGINPROVIDER",retryAnalyzer=retry.Retry.class,description="verifyTheUserIsAbleToLoginUsingInvalidCredential")
-	public void verifyTheUserIsAbleToLoginUsingInvalidCredential(String username,String password) throws IOException {
-		//String username = "admi";
-		//String password = "adm";
-		//String username=ExcelUtility.getStringData(3, 0, "LoginPage");
-		//String password=ExcelUtility.getStringData(3, 1, "LoginPage");
-
+	@Test(dataProvider = "LOGINPROVIDER", retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToLoginUsingInvalidCredential")
+	public void verifyTheUserIsAbleToLoginUsingInvalidCredential(String username, String password) throws IOException {
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickOnSignInButton();
+		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnSignInButton();
 		boolean isalertFieldDisplayed = loginpage.isAlertFieldDisplayed();
-		Assert.assertTrue(isalertFieldDisplayed, "alert is not displayed when user enter invalid credentials");
+		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertMessageForLogin);
 
 	}
-	@DataProvider(name="LOGINPROVIDER")
-		public Object[][] getDataFromTestData() throws IOException{
-			return new Object[][] {{
-				ExcelUtility.getStringData(3, 0, "LoginPage"),ExcelUtility.getStringData(3, 1, "LoginPage")},};
-				
-			
-		}
-}
 
+	@DataProvider(name = "LOGINPROVIDER")
+	public Object[][] getDataFromTestData() throws IOException {
+		return new Object[][] {
+				{ ExcelUtility.getStringData(3, 0, "LoginPage"), ExcelUtility.getStringData(3, 1, "LoginPage") }, };
+	}
+}

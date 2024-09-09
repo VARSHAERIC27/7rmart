@@ -17,12 +17,7 @@ public class ManageContactPage {
 
 	}
 
-	@FindBy(xpath = "//input[@name='username']")
-	WebElement usernameField;
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement passwordField;
-	@FindBy(xpath = "//button[@type='submit']")
-	WebElement signinField;
+	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='nav-link']")
 	WebElement moreinfoField;
 	@FindBy(xpath = "//i[@class='fas fa-edit']//parent::a")
@@ -42,17 +37,7 @@ public class ManageContactPage {
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement alertField;
 
-	public void enterUsernameOnUsernameField(String username) {
-		usernameField.sendKeys(username);
-	}
-
-	public void enterPasswordOnPasswordField(String password) {
-		passwordField.sendKeys(password);
-	}
-
-	public void clickOnSignInButton() {
-		signinField.click();
-	}
+	
 
 	public void clickOnMoreinfoField() {
 		PageUtility pageutility=new PageUtility();

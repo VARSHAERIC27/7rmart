@@ -16,6 +16,7 @@ import org.testng.annotations.Parameters;
 
 import constants.Constants;
 import utilities.ScreenShotUtility;
+import utilities.WaitUtility;
 
 public class Base {
 	WebDriver driver;
@@ -50,7 +51,7 @@ public class Base {
 		}
 		driver.get(properties.getProperty("url"));
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtility.IMPLICIT_WAIT));
 	}
 
 	@AfterMethod(alwaysRun=true)
