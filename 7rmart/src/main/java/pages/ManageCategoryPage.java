@@ -82,9 +82,9 @@ public class ManageCategoryPage {
 		return this;
 	}
 
-	public ManageContactPage clickOnSaveField() {
+	public ManageCategoryPage clickOnSaveField() {
 		savefield.click();
-		return new ManageContactPage(driver);
+		return this;
 	}
 
 	public boolean isAlertFieldDisplayed() {

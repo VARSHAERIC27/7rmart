@@ -27,6 +27,7 @@ public class LoginPage {
 	WebElement adminimageField;
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
 	WebElement alertField;
+	
 
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='small-box-footer']")
 	WebElement contactmoreinfoField;
@@ -36,6 +37,10 @@ public class LoginPage {
 	WebElement newsmoreinfoField;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-product' and @class='small-box-footer']")
 	WebElement manageproductField;
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-sub-category' and @class='small-box-footer']")
+	WebElement submoreinfoField;
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='nav-link']")
+	WebElement categorymoreinfoField;
 
 	public LoginPage enterUsername(String username) {
 		usernameField.sendKeys(username);
@@ -45,6 +50,10 @@ public class LoginPage {
 	public LoginPage enterPassword(String password) {
 		passwordField.sendKeys(password);
 		return this;
+	}
+	public LogOutPage clickOnAdminImageField() {
+		adminimageField.click();
+		return new LogOutPage(driver);
 	}
 
 	public AdminUserPage clickOnSignInButton() {
@@ -59,14 +68,12 @@ public class LoginPage {
 		pageutility.javaSriptClick(driver, newsmoreinfoField);
 		return new ManageContactPage(driver);
 
-		// moreinfoField.click();
 	}
 
 	public ManageFooterTextPage clickOnFooterMoreinfoField() {
 		PageUtility pageutility = new PageUtility();
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, FooterMoreinfoField);
-		// MoreinfoField.click();
 		return new ManageFooterTextPage(driver);
 	}
 
@@ -78,12 +85,23 @@ public class LoginPage {
 		return new ManageNewsPage(driver);
 
 	}
+	public ManageCategoryPage clickOncategorymoreinfoField() {
+		PageUtility pageutility = new PageUtility();
+		pageutility.javaSriptClick(driver, categorymoreinfoField);
+		return new ManageCategoryPage(driver);
 
+	}
 	public ManageProductPage clickOnManageProductField() {
 		PageUtility pageutility = new PageUtility();
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, manageproductField);
 		return new ManageProductPage(driver);
+	}
+	public SubCategoryPage clickOnSubMoreInfoField() {
+		PageUtility pageutility = new PageUtility();
+		pageutility.javaSriptClick(driver, submoreinfoField);
+		// moreinfoField.click();
+		return new SubCategoryPage(driver);
 	}
 
 	public boolean isHomePageLoaded() {

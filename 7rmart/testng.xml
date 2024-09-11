@@ -8,16 +8,17 @@
   <test thread-count="5" name="TestNG.xml">
   
     <classes>
-    <class name="testscript.ManageProductTest">
+    <class name="testscript.LogOutTest">
+    <!--<class name="testscript.ManageProductTest">-->
      <!--<class name="testscript.ManageFooterTextTest">-->
       <!-- <class name="testscript.ManageContactTest">-->
-      <methods>
+     <!-- <methods>
       <include name="verifyTheUserIsAbleToDeleteTheProduct"></include>
-      <!-- <include name="verifyTheUserIsAbleToCreateNews"></include>-->
+      <include name="verifyTheUserIsAbleToCreateNews"></include>-->
      <!-- <include name="verifyTheUserIsAbleToUpdateFooterText"></include>-->
       <!--<include name="verifyTheUserIsAbleToUpdateContact"></include>-->
      <!-- <exclude  name="verifyTheUserIsAbleToLoginUsingValidCredential"></exclude>-->
-      </methods>
+      <!--</methods>-->
       </class>
     </classes>
   </test> <!-- TestNG.xml -->

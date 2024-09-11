@@ -37,10 +37,10 @@ public class LogOutPage {
 		return this;
 	}
 
-	public LogOutPage clickOnLogOutField() {
+	public ManageCategoryPage clickOnLogOutField() {
 		PageUtility pageutility = new PageUtility();
 		pageutility.javaSriptClick(driver, logoutField);
-		return this;
+		return new ManageCategoryPage(driver);
 
 	}
 

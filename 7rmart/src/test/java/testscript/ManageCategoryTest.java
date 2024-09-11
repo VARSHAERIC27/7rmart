@@ -15,7 +15,6 @@ import utilities.ExcelUtility;
 public class ManageCategoryTest extends Base {
 	public AdminUserPage admin;
 	public ManageCategoryPage managecategory;
-	public ManageContactPage contact;
 	public LoginPage login;
 
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToAddNewCategory")
@@ -26,7 +25,8 @@ public class ManageCategoryTest extends Base {
 		login = new LoginPage(driver);
 		login.enterUsername(username).enterPassword(password);
 		admin = login.clickOnSignInButton();
-		contact = managecategory.clickOnMoreinfoField().clickOnNewField().enterTheCategoryOnCategoryField(category)
+		managecategory = login.clickOncategorymoreinfoField();
+		managecategory.clickOnMoreinfoField().clickOnNewField().enterTheCategoryOnCategoryField(category)
 				.selectGroupFromSelectGroupField().imageField().clickOnTopMenu().clickOnLeftMenu().clickOnSaveField();
 		boolean isalertFieldDisplayed = managecategory.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertMessage);

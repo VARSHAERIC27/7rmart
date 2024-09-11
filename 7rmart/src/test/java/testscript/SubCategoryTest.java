@@ -7,23 +7,36 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import constants.Constants;
+import pages.AdminUserPage;
+import pages.LogOutPage;
 import pages.LoginPage;
+import pages.ManageContactPage;
+import pages.ManageFooterTextPage;
+import pages.ManageNewsPage;
+import pages.ManageProductPage;
 import pages.SubCategoryPage;
 import utilities.ExcelUtility;
 
 public class SubCategoryTest extends Base {
+	public ManageContactPage contact;
+	public LoginPage login;
+	public ManageFooterTextPage footer;
+	public AdminUserPage admin;
+	public ManageNewsPage newspage;
+	public ManageProductPage product;
+	public SubCategoryPage subCategory;
+	public LogOutPage logout;
+
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToChangeTheStatus")
 	public void verifyTheUserIsAbleToChangeTheStatus() throws IOException {
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUsername(username);
-		loginPage.enterPassword(password);
-		loginPage.clickOnSignInButton();
-		SubCategoryPage subcategorypage = new SubCategoryPage(driver);
-        subcategorypage.clickOnMoreInfoField();
-		subcategorypage.clickOnStatusField();
-		boolean isalertfielddisplayed = subcategorypage.isAlertFieldDisplayed();
+		login = new LoginPage(driver);
+		login.enterUsername(username).enterPassword(password);
+		admin = login.clickOnSignInButton();
+		subCategory = login.clickOnSubMoreInfoField();
+		logout = subCategory.clickOnStatusField();
+		boolean isalertfielddisplayed = subCategory.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertfielddisplayed, Constants.AlertForSubCategory);
 	}
 
@@ -32,16 +45,13 @@ public class SubCategoryTest extends Base {
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		String subcategory = ExcelUtility.getStringData(1, 0, "SubCategoryPage");
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUsername(username).enterPassword(password).clickOnSignInButton();
-		SubCategoryPage subcategorynewPage = new SubCategoryPage(driver);
-		subcategorynewPage.clickOnMoreInfoField();
-		subcategorynewPage.clickOnNewField();
-		subcategorynewPage.selectOncategoryField();
-		subcategorynewPage.enterSubcategoryOnSubCategoryField(subcategory);
-		subcategorynewPage.chooseFileOnImageField();
-		subcategorynewPage.clickOnSaveField();
-		boolean isAlertFieldDisplayed = subcategorynewPage.isAlertFieldDisplayed();
+		login = new LoginPage(driver);
+		login.enterUsername(username).enterPassword(password);
+		admin = login.clickOnSignInButton();
+		subCategory = login.clickOnSubMoreInfoField();
+		logout = subCategory.clickOnNewField().selectOncategoryField().enterSubcategoryOnSubCategoryField(subcategory)
+				.chooseFileOnImageField().clickOnSaveField();
+		boolean isAlertFieldDisplayed = subCategory.isAlertFieldDisplayed();
 		Assert.assertTrue(isAlertFieldDisplayed, Constants.AlertMessage);
 
 	}

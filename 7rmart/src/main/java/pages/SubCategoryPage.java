@@ -50,9 +50,9 @@ public class SubCategoryPage {
 		return this;
 	}
 
-	public SubCategoryPage clickOnStatusField() {
+	public LogOutPage clickOnStatusField() {
 		statusField.click();
-		return this;
+		return new LogOutPage(driver);
 	}
 
 	public SubCategoryPage clickOnNewField() {
