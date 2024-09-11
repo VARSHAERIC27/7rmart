@@ -41,22 +41,24 @@ public class ManageCategoryPage {
 	WebElement alertField;
 	
 
-	public void clickOnMoreinfoField() {
+	public ManageCategoryPage clickOnMoreinfoField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaSriptClick(driver, moreinfoField);
+		return this;
 		
-		//MoreInfoField.click();
 	}
-	public void clickOnNewField() {
+	public ManageCategoryPage clickOnNewField() {
 		NewField.click();
+		return this;
 
 	}
-	public void enterTheCategoryOnCategoryField(String category) {
+	public ManageCategoryPage enterTheCategoryOnCategoryField(String category) {
 		//PageUtility pageutility=new PageUtility();
 		//pageutility.javaSriptClick(driver, categoryField);
 		categoryField.sendKeys(category);
+		return this;
 	}
-	public void selectGroupFromSelectGroupField() {
+	public ManageCategoryPage selectGroupFromSelectGroupField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaSriptClick(driver, selectgroupField);
 		pageutility.javaScriptScrollToEnd(driver);
@@ -64,20 +66,25 @@ public class ManageCategoryPage {
 		//pageutility.dragAndDropAction(driver,selectgroupField , dropField);
 		//pageutility.doubleClickAction(driver, selectgroupField);
 		//selectgroupField.click();
+		return this;
 	}
-	public void imageField() {
+	public ManageCategoryPage imageField() {
 		FileUploadUtility fileuploadutility=new FileUploadUtility();
 		fileuploadutility.fileUploadUsingSendKeys(imageField,Constants.IMAGE);
+		return this;
 		
 	}
-	public void clickOnTopMenu() {
+	public ManageCategoryPage clickOnTopMenu() {
 		topmenuField.click();
+		return this;
 	}
-	public void clickOnLeftMenu() {
+	public ManageCategoryPage clickOnLeftMenu() {
 		leftmenuField.click();
+		return this;
 	}
-	public void clickOnSaveField() {
+	public ManageContactPage clickOnSaveField() {
 		savefield.click();
+		return new ManageContactPage(driver);
 	}
 	public boolean isAlertFieldDisplayed() {
 		PageUtility pageutility=new PageUtility();

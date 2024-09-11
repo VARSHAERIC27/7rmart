@@ -6,12 +6,18 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import constants.Constants;
+import pages.AdminUserPage;
 import pages.LoginPage;
 import pages.ManageContactPage;
+import pages.ManageFooterTextPage;
 import utilities.ExcelUtility;
 import utilities.WaitUtility;
 
 public class ManageContactTest extends Base {
+	public LoginPage login;
+	public AdminUserPage admin;
+	public ManageContactPage contact;
+	public ManageFooterTextPage footer;
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToUpdateContact")
 	public void verifyTheUserIsAbleToUpdateContact() throws IOException {
 		// String username="admin";
@@ -28,12 +34,15 @@ public class ManageContactTest extends Base {
 		String address = ExcelUtility.getStringData(1, 2, "ManageContactPage");
 		String time = ExcelUtility.getStringData(1, 3, "ManageContactPage");
 		String charge = ExcelUtility.getIntegerData(1, 4, "ManageContactPage");
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(username);
-		loginPage.enterPasswordOnPasswordField(password);
-		loginPage.clickOnSignInButton();
-		ManageContactPage managecontactpage = new ManageContactPage(driver);
-		managecontactpage.clickOnMoreinfoField();
+		 login = new LoginPage(driver);
+		login.enterUsername(username).enterPassword(password);
+		//loginPage.enterPasswordOnPasswordField(password);
+		//loginPage.clickOnSignInButton();
+		admin=login.clickOnSignInButton();
+		contact=login.clickOncontactMoreinfoField();
+		//ManageContactPage managecontactpage = new ManageContactPage(driver);
+		footer=contact.clickOnActionField().clearThePhoneField().enterPhoneNumberOnPhoneField(phone).clearTheEmailField().enterEmailOnEmailField(email).clearTheAddressField().enterAddressOnAddressField(address).clearTheDeliveryTimeField().enterDeliveryTimeOnDeliveryTimeField(charge).clearTheDeliverychargelimitField().enterDeliverychargelimitOnDeliverychargelimitField(charge).clickOnupdateField();
+		/*managecontactpage.clickOnMoreinfoField();
 		managecontactpage.clickOnActionField();
 		managecontactpage.clearThePhoneField();
 		managecontactpage.enterPhoneNumberOnPhoneField(phone);
@@ -45,10 +54,10 @@ public class ManageContactTest extends Base {
 		managecontactpage.enterDeliveryTimeOnDeliveryTimeField(time);
 		managecontactpage.clearTheDeliverychargelimitField();
 		managecontactpage.enterDeliverychargelimitOnDeliverychargelimitField(charge);
-		managecontactpage.clickOnupdateField();
-		WaitUtility waitutility = new WaitUtility();
-		waitutility.waitForAlertToBeVisible(driver);
-		boolean isalertfielddisplayed = managecontactpage.isAlertFieldDisplayed();
+		managecontactpage.clickOnupdateField();*/
+		//WaitUtility waitutility = new WaitUtility();
+		//waitutility.waitForAlertToBeVisible(driver);
+		boolean isalertfielddisplayed = contact.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertfielddisplayed, Constants.AlertMessageForManageContact);
 	}
 

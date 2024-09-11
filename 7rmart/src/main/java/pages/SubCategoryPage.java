@@ -42,41 +42,48 @@ public class SubCategoryPage {
 	WebElement statusField;
 	
 	
-	public void clickOnMoreInfoField() {
+	public SubCategoryPage clickOnMoreInfoField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaSriptClick(driver, moreinfoField);
 		//moreinfoField.click();
+		return this;
 	}
-	public void clickOnStatusField() {
+	public SubCategoryPage clickOnStatusField() {
 		statusField.click();
+		return this;
 	}
 
-	public void clickOnNewField() {
+	public SubCategoryPage clickOnNewField() {
 		newField.click();
+		return this;
 	}
-	public void selectOncategoryField() {
+	public SubCategoryPage selectOncategoryField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.selectByIndex(categoryField, 3);
+		return this;
 		
 	}
-	public void enterSubcategoryOnSubCategoryField(String subcategory)  {
+	public SubCategoryPage enterSubcategoryOnSubCategoryField(String subcategory)  {
 		subcategoryField.sendKeys(subcategory);
+		return this;
 		
 		
 	}
 	
-	public void chooseFileOnImageField()  {
+	public SubCategoryPage chooseFileOnImageField()  {
 		FileUploadUtility fileuploadutility=new FileUploadUtility();
 		fileuploadutility.fileUploadUsingSendKeys(imageField , Constants.IMAGE);
+		return this;
 		
 		
 	}
-	public void clickOnSaveField() {
+	public LogOutPage clickOnSaveField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaScriptScroll(driver);
 		pageutility.javaSriptClick(driver, saveField);
         //saveField.click();
+		return new LogOutPage(driver);
 	}
 	public boolean isAlertFieldDisplayed() {
 		PageUtility pageutility=new PageUtility();

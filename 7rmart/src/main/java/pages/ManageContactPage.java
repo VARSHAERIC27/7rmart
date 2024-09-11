@@ -18,7 +18,7 @@ public class ManageContactPage {
 	}
 
 	
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='nav-link']")
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='small-box-footer']")
 	WebElement moreinfoField;
 	@FindBy(xpath = "//i[@class='fas fa-edit']//parent::a")
 	WebElement actionField;
@@ -39,43 +39,51 @@ public class ManageContactPage {
 
 	
 
-	public void clickOnMoreinfoField() {
+	public ManageContactPage clickOnMoreinfoField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaSriptClick(driver, moreinfoField);
+		return this;
 
 		
 		//moreinfoField.click();
 	}
 
-	public void clickOnActionField() {
+	public ManageContactPage clickOnActionField() {
 		actionField.click();
+		return this;
 	}
 
-	public void enterPhoneNumberOnPhoneField(String phone) {
+	public ManageContactPage enterPhoneNumberOnPhoneField(String phone) {
 		phoneField.sendKeys(phone);
+		return this;
 
 	}
 
-	public void enterEmailOnEmailField(String email) {
+	public ManageContactPage enterEmailOnEmailField(String email) {
 		EmailField.sendKeys(email);
+		return this;
 
 	}
 
-	public void enterAddressOnAddressField(String address) {
+	public ManageContactPage enterAddressOnAddressField(String address) {
 		addressField.sendKeys(address);
+		return this;
 	}
 
-	public void enterDeliveryTimeOnDeliveryTimeField(String time) {
+	public ManageContactPage enterDeliveryTimeOnDeliveryTimeField(String time) {
 		deliverytimeField.sendKeys(time);
+		return this;
 	}
 
-	public void enterDeliverychargelimitOnDeliverychargelimitField(String charge) {
+	public ManageContactPage enterDeliverychargelimitOnDeliverychargelimitField(String charge) {
 		deliverychargelimitField.sendKeys(charge);
+		return this;
 	}
 
-	public void clickOnupdateField() {
+	public ManageFooterTextPage clickOnupdateField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaSriptClick(driver, updateField);
+		return new ManageFooterTextPage(driver);
 
 		
 		//updateField.click();
@@ -86,21 +94,26 @@ public class ManageContactPage {
 		return pageutility.isAnElementDisplayed(alertField);
 
 	}
-	public void clearThePhoneField() {
+	public ManageContactPage clearThePhoneField() {
 		phoneField.clear();
+		return this;
 	}
-	public void clearTheEmailField() {
+	public ManageContactPage clearTheEmailField() {
 		EmailField.clear();
+		return this;
 	}
-	public void clearTheAddressField() {
+	public ManageContactPage clearTheAddressField() {
 		addressField.clear();
+		return this;
 	}
 
-	public void clearTheDeliveryTimeField() {
+	public ManageContactPage clearTheDeliveryTimeField() {
 		deliverytimeField.clear();
+		return this;
 	}
-	public void clearTheDeliverychargelimitField() {
+	public ManageContactPage clearTheDeliverychargelimitField() {
 		deliverychargelimitField.clear();
+		return this;
 	}
 
 

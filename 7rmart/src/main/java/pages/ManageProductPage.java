@@ -23,17 +23,19 @@ public class ManageProductPage {
 	WebElement alertField;
 	
 
-	public void clickOnManageProductField() {
+	public ManageProductPage clickOnManageProductField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, manageproductField);
 		//manageproductField.click();
+		return this;
 	}
 
-	public void clickOnDeleteField() {
+	public SubCategoryPage clickOnDeleteField() {
 		deleteField.click();
 		PageUtility pageutility=new PageUtility();
 		pageutility.acceptAlert(driver);
+		return new SubCategoryPage(driver);
 	}
 
 	public boolean isAlertFieldDisplayed() {

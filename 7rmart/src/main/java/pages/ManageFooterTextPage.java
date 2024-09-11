@@ -31,30 +31,36 @@ public class ManageFooterTextPage {
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement alertField;
 	
-	public void clickOnMoreinfoField() {
+	public ManageFooterTextPage clickOnMoreinfoField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, MoreinfoField);
 		//MoreinfoField.click();
+		return this;
 	}
-	public void clickOnActionField() {
+	public ManageFooterTextPage clickOnActionField() {
 		
 		actionField.click();
+		return this;
 	}
-	public void enterAddressOnAddressField(String address) {
+	public ManageFooterTextPage enterAddressOnAddressField(String address) {
 		addressField.sendKeys(address);
+		return this;
 	}
-	public void enterEmailOnEmailField(String email) {
+	public ManageFooterTextPage enterEmailOnEmailField(String email) {
 		emailField.sendKeys(email);
+		return this;
 	}
-	public void enterPhoneOnPhoneField(String phone) {
+	public ManageFooterTextPage enterPhoneOnPhoneField(String phone) {
 		phoneField.sendKeys(phone);
+		return this;
 	}
-	public void clickOnUpdateField() {
+	public ManageNewsPage clickOnUpdateField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaScriptScroll(driver);
 		//pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, updateField);
+		return new ManageNewsPage(driver);
 
 		//updateField.click();
 	}
@@ -63,14 +69,17 @@ public class ManageFooterTextPage {
 		return pageutility.isAnElementDisplayed(alertField);
 
 	}
-	public void clearThePhoneField() {
+	public ManageFooterTextPage clearThePhoneField() {
 		phoneField.clear();
+		return this;
 	}
-	public void clearTheEmailField() {
+	public ManageFooterTextPage clearTheEmailField() {
 		emailField.clear();
+		return this;
 	}
-	public void clearTheAddressField() {
+	public ManageFooterTextPage clearTheAddressField() {
 		addressField.clear();
+		return this;
 	}
 	
 	

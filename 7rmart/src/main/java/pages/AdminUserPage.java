@@ -17,7 +17,6 @@ public class AdminUserPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
 	WebElement MoreInfoField;
 	@FindBy(xpath = "//div[@class='col-sm-12']//child::a")
@@ -33,40 +32,44 @@ public class AdminUserPage {
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement AlertField;
 
-	
-
-	public void clickOnMoreinfoField() {
-		PageUtility pageutility=new PageUtility();
+	public AdminUserPage clickOnMoreinfoField() {
+		PageUtility pageutility = new PageUtility();
 		pageutility.javaSriptClick(driver, MoreInfoField);
-		
-		//MoreInfoField.click();
+		return this;
+
+		// MoreInfoField.click();
 	}
 
-	public void clickOnNewField() {
+	public AdminUserPage clickOnNewField() {
 		newField.click();
+		return this;
 	}
 
-	public void enterUserNameOnAdminUsernameField(String adminusername) {
+	public AdminUserPage enterUserNameOnAdminUsernameField(String adminusername) {
 		adminusernameField.sendKeys(adminusername);
+		return this;
 	}
 
-	public void enterPasswordOnAdminPasswordField(String adminpassword) {
+	public AdminUserPage enterPasswordOnAdminPasswordField(String adminpassword) {
 		adminpasswordField.sendKeys(adminpassword);
+		return this;
 	}
 
-	public void selectUserTypeField() {
-		PageUtility pageutility=new PageUtility();
+	public AdminUserPage selectUserTypeField() {
+		PageUtility pageutility = new PageUtility();
 		pageutility.selectByIndex(usertypeField, 1);
+		return this;
 
 	}
 
-	public void clickOnSaveField() {
+	public ManageContactPage clickOnSaveField() {
 		saveField.click();
-	}
+		return new ManageContactPage(driver);
+}
 
 	public boolean isAlertfieldDisplayed() {
-		PageUtility pageutility=new PageUtility();
-		return  pageutility.isAnElementDisplayed(AlertField);
-		
+		PageUtility pageutility = new PageUtility();
+		return pageutility.isAnElementDisplayed(AlertField);
+
 	}
 }

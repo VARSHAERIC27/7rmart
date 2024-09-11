@@ -27,34 +27,73 @@ public class LoginPage {
 	WebElement adminimageField;
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
 	WebElement alertField;
+	
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='small-box-footer']")
+	WebElement contactmoreinfoField;
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext' and @class='small-box-footer']")
+	WebElement FooterMoreinfoField;
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")
+	WebElement newsmoreinfoField;
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-product' and @class='small-box-footer']")
+	WebElement manageproductField;
 
-	public LoginPage enterUsernameOnUsernameField(String username) {
+	public LoginPage enterUsername(String username) {
 		usernameField.sendKeys(username);
 		return this;
 	}
 
-	public LoginPage enterPasswordOnPasswordField(String password) {
+	public LoginPage enterPassword(String password) {
 		passwordField.sendKeys(password);
 		return this;
 	}
 
-	public  LoginPage clickOnSignInButton() {
-		WaitUtility waitutility=new WaitUtility();
+	public AdminUserPage clickOnSignInButton() {
+		WaitUtility waitutility = new WaitUtility();
 		waitutility.waitForElementToBeClickable(driver, signinField);
 		signinField.click();
-		return this;
+		return new AdminUserPage(driver);
+	}
+	
+	public ManageContactPage clickOncontactMoreinfoField() {
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaSriptClick(driver, newsmoreinfoField);
+		return new ManageContactPage(driver);
+
+		
+		//moreinfoField.click();
+	}
+	public ManageFooterTextPage clickOnFooterMoreinfoField() {
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaScriptScrollToEnd(driver);
+		pageutility.javaSriptClick(driver, FooterMoreinfoField);
+		//MoreinfoField.click();
+		return new ManageFooterTextPage(driver);
+	}
+	public ManageNewsPage clickOnnewsMoreinfoField() {
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaScriptScroll(driver);
+		pageutility.javaScriptScrollToEnd(driver);
+		pageutility.javaSriptClick(driver, newsmoreinfoField);
+		return new ManageNewsPage(driver);
+		
+	}
+	public ManageProductPage clickOnManageProductField() {
+		PageUtility pageutility=new PageUtility();
+		pageutility.javaScriptScrollToEnd(driver);
+		pageutility.javaSriptClick(driver, manageproductField);
+		//manageproductField.click();
+		return new ManageProductPage(driver);
 	}
 
 	public boolean isHomePageLoaded() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		return pageutility.isAnElementDisplayed(adminimageField);
 
 	}
 
 	public boolean isAlertFieldDisplayed() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		return pageutility.isAnElementDisplayed(alertField);
-
 
 	}
 

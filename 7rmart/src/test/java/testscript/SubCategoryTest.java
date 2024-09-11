@@ -19,12 +19,11 @@ public class SubCategoryTest extends Base {
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(username);
-		loginPage.enterPasswordOnPasswordField(password);
+		loginPage.enterUsername(username);
+		loginPage.enterPassword(password);
 		loginPage.clickOnSignInButton();
 		SubCategoryPage subcategorypage = new SubCategoryPage(driver);
-
-		subcategorypage.clickOnMoreInfoField();
+        subcategorypage.clickOnMoreInfoField();
 		subcategorypage.clickOnStatusField();
 		boolean isalertfielddisplayed = subcategorypage.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertfielddisplayed, Constants.AlertForSubCategory);
@@ -39,9 +38,9 @@ public class SubCategoryTest extends Base {
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		String subcategory = ExcelUtility.getStringData(1, 0, "SubCategoryPage");
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUsernameOnUsernameField(username);
-		loginPage.enterPasswordOnPasswordField(password);
-		loginPage.clickOnSignInButton();
+		loginPage.enterUsername(username).enterPassword(password).clickOnSignInButton();
+		//loginPage.enterPasswordOnPasswordField(password);
+		//loginPage.clickOnSignInButton();
 		SubCategoryPage subcategorynewPage = new SubCategoryPage(driver);
 		subcategorynewPage.clickOnMoreInfoField();
 		subcategorynewPage.clickOnNewField();

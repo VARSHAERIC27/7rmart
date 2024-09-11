@@ -8,9 +8,14 @@
   <test thread-count="5" name="TestNG.xml">
   
     <classes>
-      <class name="testscript.LoginTest">
+    <class name="testscript.ManageProductTest">
+     <!--<class name="testscript.ManageFooterTextTest">-->
+      <!-- <class name="testscript.ManageContactTest">-->
       <methods>
-      <include name="verifyTheUserIsAbleToLoginUsingInvalidCredential"></include>
+      <include name="verifyTheUserIsAbleToDeleteTheProduct"></include>
+      <!-- <include name="verifyTheUserIsAbleToCreateNews"></include>-->
+     <!-- <include name="verifyTheUserIsAbleToUpdateFooterText"></include>-->
+      <!--<include name="verifyTheUserIsAbleToUpdateContact"></include>-->
      <!-- <exclude  name="verifyTheUserIsAbleToLoginUsingValidCredential"></exclude>-->
       </methods>
       </class>

@@ -22,7 +22,7 @@ public class LoginTest extends Base {
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnSignInButton();
+		loginpage.enterUsername(username).enterPassword(password).clickOnSignInButton();
 		boolean ishomePageloaded = loginpage.isHomePageLoaded();
 		assertTrue(ishomePageloaded, Constants.ErrormessageForLogin);
 
@@ -36,7 +36,7 @@ public class LoginTest extends Base {
 		String username = ExcelUtility.getStringData(2, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(2, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnSignInButton();
+		loginpage.enterUsername(username).enterPassword(password).clickOnSignInButton();
 		boolean isalertFieldDisplayed = loginpage.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertMessageForLogin);
 	}
@@ -48,7 +48,7 @@ public class LoginTest extends Base {
 		String username = ExcelUtility.getStringData(3, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(3, 1, "LoginPage");
 		LoginPage lpage = new LoginPage(driver);
-		lpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnSignInButton();
+		lpage.enterUsername(username).enterPassword(password).clickOnSignInButton();
 		boolean isalertFieldDisplayed = lpage.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertMessageForLogin);
 	}
@@ -56,7 +56,7 @@ public class LoginTest extends Base {
 	@Test(dataProvider = "LOGINPROVIDER", retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToLoginUsingInvalidCredential")
 	public void verifyTheUserIsAbleToLoginUsingInvalidCredential(String username, String password) throws IOException {
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnSignInButton();
+		loginpage.enterUsername(username).enterPassword(password).clickOnSignInButton();
 		boolean isalertFieldDisplayed = loginpage.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertMessageForLogin);
 

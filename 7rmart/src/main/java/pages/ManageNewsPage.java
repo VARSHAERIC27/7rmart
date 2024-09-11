@@ -35,26 +35,30 @@ public class ManageNewsPage {
 
 	
 
-	public void clickOnMoreinfoField() {
+	public ManageNewsPage clickOnMoreinfoField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaScriptScroll(driver);
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, moreinfoField);
+		return this;
 		
 	}
 
-	public void clickOnsNewField() {
+	public ManageNewsPage clickOnsNewField() {
 		NewField.click();
+		return this;
 	}
 
-	public void enterTheNewsOnEnterNewsField(String news) {
+	public ManageNewsPage enterTheNewsOnEnterNewsField(String news) {
 		EnterNewsField.sendKeys(news);
+		return this;
 	}
 
-	public void clickOnSaveField() {
+	public ManageProductPage clickOnSaveField() {
 		WaitUtility waitutility=new WaitUtility();
 		waitutility.waitForElementToBeClickable(driver, SaveField);
 		SaveField.click();
+		return new ManageProductPage(driver);
 	}
 
 	public boolean isAlertFieldDisplayed() {

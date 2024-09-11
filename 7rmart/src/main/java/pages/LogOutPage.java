@@ -25,22 +25,25 @@ public class LogOutPage {
 	
 
 	
-	public void clickOnAdminImageField() {
+	public LogOutPage clickOnAdminImageField() {
 		adminimageField.click();
+		return this;
 	}
 	
 
-	public void clickOnSettingsField() {
+	public LogOutPage clickOnSettingsField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaScriptScrollToEnd(driver);
 		
 
 		settingsField.click();
+		return this;
 	}
 
-	public void clickOnLogOutField() {
+	public LogOutPage clickOnLogOutField() {
 		PageUtility pageutility=new PageUtility();
 		pageutility.javaSriptClick(driver, logoutField);
+		return this;
 
 		//logoutField.click();
 	}
