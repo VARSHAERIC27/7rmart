@@ -21,25 +21,17 @@ public class ManageNewsTest extends Base {
 	public AdminUserPage admin;
 	public ManageNewsPage newspage;
 	public ManageProductPage product;
+
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToCreateNews")
 	public void verifyTheUserIsAbleToCreateNews() throws IOException {
-		// String username = "admin";
-		// String password = "admin";
-		// String news="wayanad landslides";
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		String news = ExcelUtility.getStringData(1, 0, "ManageNewsPage");
-		 login = new LoginPage(driver);
+		login = new LoginPage(driver);
 		login.enterUsername(username).enterPassword(password);
-		//loginPage.enterPasswordOnPasswordField(password);
-		admin=login.clickOnSignInButton();
-		newspage=login.clickOnnewsMoreinfoField();
-		product=newspage.clickOnsNewField().enterTheNewsOnEnterNewsField(news).clickOnSaveField();
-		/*ManageNewsPage managenewspage = new ManageNewsPage(driver);
-		managenewspage.clickOnMoreinfoField();
-		managenewspage.clickOnsNewField();
-		managenewspage.enterTheNewsOnEnterNewsField(news);
-		managenewspage.clickOnSaveField();*/
+		admin = login.clickOnSignInButton();
+		newspage = login.clickOnnewsMoreinfoField();
+		product = newspage.clickOnsNewField().enterTheNewsOnEnterNewsField(news).clickOnSaveField();
 		boolean isalertFieldDisplayed = newspage.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertFieldDisplayed, Constants.AlertForManageNews);
 	}

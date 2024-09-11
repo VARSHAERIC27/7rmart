@@ -14,8 +14,6 @@ import utilities.ExcelUtility;
 public class SubCategoryTest extends Base {
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToChangeTheStatus")
 	public void verifyTheUserIsAbleToChangeTheStatus() throws IOException {
-		// String username="admin";
-		// String password="admin";
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		LoginPage loginPage = new LoginPage(driver);
@@ -31,24 +29,17 @@ public class SubCategoryTest extends Base {
 
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToAddNewSubCategory")
 	public void verifyTheUserIsAbleToAddNewSubCategory() throws IOException {
-		// String username="admin";
-		// String password="admin";
-		// String subcategory="goldFanfast";
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		String subcategory = ExcelUtility.getStringData(1, 0, "SubCategoryPage");
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUsername(username).enterPassword(password).clickOnSignInButton();
-		//loginPage.enterPasswordOnPasswordField(password);
-		//loginPage.clickOnSignInButton();
 		SubCategoryPage subcategorynewPage = new SubCategoryPage(driver);
 		subcategorynewPage.clickOnMoreInfoField();
 		subcategorynewPage.clickOnNewField();
 		subcategorynewPage.selectOncategoryField();
 		subcategorynewPage.enterSubcategoryOnSubCategoryField(subcategory);
 		subcategorynewPage.chooseFileOnImageField();
-		// PageUtility pageutility=new PageUtility();
-		// pageutility.javaSriptClick(driver, saveField);
 		subcategorynewPage.clickOnSaveField();
 		boolean isAlertFieldDisplayed = subcategorynewPage.isAlertFieldDisplayed();
 		Assert.assertTrue(isAlertFieldDisplayed, Constants.AlertMessage);

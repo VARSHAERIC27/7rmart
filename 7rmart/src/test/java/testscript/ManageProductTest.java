@@ -26,19 +26,13 @@ public class ManageProductTest extends Base {
 
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToDeleteTheProduct")
 	public void verifyTheUserIsAbleToDeleteTheProduct() throws IOException {
-		// String username = "admin";
-		// String password = "admin";
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
-		 login = new LoginPage(driver);
+		login = new LoginPage(driver);
 		login.enterUsername(username).enterPassword(password);
-		//loginPage.enterPasswordOnPasswordField(password);
-		admin=login.clickOnSignInButton();
-		product=login.clickOnManageProductField();
-		SubCategory= product.clickOnDeleteField();
-		//ManageProductPage manageproductpage = new ManageProductPage(driver);
-		//manageproductpage.clickOnManageProductField();
-		//manageproductpage.clickOnDeleteField();
+		admin = login.clickOnSignInButton();
+		product = login.clickOnManageProductField();
+		SubCategory = product.clickOnDeleteField();
 		boolean isalertfielddisplayed = product.isAlertFieldDisplayed();
 		Assert.assertTrue(isalertfielddisplayed, Constants.AlertForManageProduct);
 	}

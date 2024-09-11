@@ -27,7 +27,7 @@ public class LoginPage {
 	WebElement adminimageField;
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
 	WebElement alertField;
-	
+
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='small-box-footer']")
 	WebElement contactmoreinfoField;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext' and @class='small-box-footer']")
@@ -53,35 +53,36 @@ public class LoginPage {
 		signinField.click();
 		return new AdminUserPage(driver);
 	}
-	
+
 	public ManageContactPage clickOncontactMoreinfoField() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		pageutility.javaSriptClick(driver, newsmoreinfoField);
 		return new ManageContactPage(driver);
 
-		
-		//moreinfoField.click();
+		// moreinfoField.click();
 	}
+
 	public ManageFooterTextPage clickOnFooterMoreinfoField() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, FooterMoreinfoField);
-		//MoreinfoField.click();
+		// MoreinfoField.click();
 		return new ManageFooterTextPage(driver);
 	}
+
 	public ManageNewsPage clickOnnewsMoreinfoField() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		pageutility.javaScriptScroll(driver);
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, newsmoreinfoField);
 		return new ManageNewsPage(driver);
-		
+
 	}
+
 	public ManageProductPage clickOnManageProductField() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, manageproductField);
-		//manageproductField.click();
 		return new ManageProductPage(driver);
 	}
 

@@ -17,8 +17,6 @@ public class LoginTest extends Base {
 			"Regression" })
 	public void verifyTheUserIsAbleToLoginUsingValidCredential() throws IOException {
 
-		// String username = "admin";
-		// String password = "admin";
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
@@ -31,8 +29,7 @@ public class LoginTest extends Base {
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToLoginUsingInvalidUsername", groups = {
 			"Smoke" })
 	public void verifyTheUserIsAbleToLoginUsingInvalidUsername() throws IOException {
-		// String username = "varsha";
-		// String password = "admin";
+
 		String username = ExcelUtility.getStringData(2, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(2, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
@@ -43,8 +40,7 @@ public class LoginTest extends Base {
 
 	@Test(retryAnalyzer = retry.Retry.class, description = "verifyTheUserIsAbleToLoginUsingInvalidPassword")
 	public void verifyTheUserIsAbleToLoginUsingInvalidPassword() throws IOException {
-		// String username = "admin";
-		// String password = "adm";
+
 		String username = ExcelUtility.getStringData(3, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(3, 1, "LoginPage");
 		LoginPage lpage = new LoginPage(driver);

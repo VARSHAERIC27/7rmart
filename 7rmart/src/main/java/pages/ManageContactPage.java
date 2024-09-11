@@ -17,7 +17,6 @@ public class ManageContactPage {
 
 	}
 
-	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='small-box-footer']")
 	WebElement moreinfoField;
 	@FindBy(xpath = "//i[@class='fas fa-edit']//parent::a")
@@ -37,15 +36,11 @@ public class ManageContactPage {
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement alertField;
 
-	
-
 	public ManageContactPage clickOnMoreinfoField() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		pageutility.javaSriptClick(driver, moreinfoField);
 		return this;
 
-		
-		//moreinfoField.click();
 	}
 
 	public ManageContactPage clickOnActionField() {
@@ -81,27 +76,28 @@ public class ManageContactPage {
 	}
 
 	public ManageFooterTextPage clickOnupdateField() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		pageutility.javaSriptClick(driver, updateField);
 		return new ManageFooterTextPage(driver);
 
-		
-		//updateField.click();
 	}
 
 	public boolean isAlertFieldDisplayed() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		return pageutility.isAnElementDisplayed(alertField);
 
 	}
+
 	public ManageContactPage clearThePhoneField() {
 		phoneField.clear();
 		return this;
 	}
+
 	public ManageContactPage clearTheEmailField() {
 		EmailField.clear();
 		return this;
 	}
+
 	public ManageContactPage clearTheAddressField() {
 		addressField.clear();
 		return this;
@@ -111,12 +107,10 @@ public class ManageContactPage {
 		deliverytimeField.clear();
 		return this;
 	}
+
 	public ManageContactPage clearTheDeliverychargelimitField() {
 		deliverychargelimitField.clear();
 		return this;
 	}
-
-
-
 
 }

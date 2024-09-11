@@ -65,7 +65,7 @@ public class AdminUserPage {
 	public ManageContactPage clickOnSaveField() {
 		saveField.click();
 		return new ManageContactPage(driver);
-}
+	}
 
 	public boolean isAlertfieldDisplayed() {
 		PageUtility pageutility = new PageUtility();

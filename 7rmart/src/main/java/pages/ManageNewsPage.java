@@ -21,7 +21,6 @@ public class ManageNewsPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")
 	WebElement moreinfoField;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger' and @onclick='click_button(1)']")
@@ -33,15 +32,13 @@ public class ManageNewsPage {
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement alertField;
 
-	
-
 	public ManageNewsPage clickOnMoreinfoField() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		pageutility.javaScriptScroll(driver);
 		pageutility.javaScriptScrollToEnd(driver);
 		pageutility.javaSriptClick(driver, moreinfoField);
 		return this;
-		
+
 	}
 
 	public ManageNewsPage clickOnsNewField() {
@@ -55,14 +52,14 @@ public class ManageNewsPage {
 	}
 
 	public ManageProductPage clickOnSaveField() {
-		WaitUtility waitutility=new WaitUtility();
+		WaitUtility waitutility = new WaitUtility();
 		waitutility.waitForElementToBeClickable(driver, SaveField);
 		SaveField.click();
 		return new ManageProductPage(driver);
 	}
 
 	public boolean isAlertFieldDisplayed() {
-		PageUtility pageutility=new PageUtility();
+		PageUtility pageutility = new PageUtility();
 		return pageutility.isAnElementDisplayed(alertField);
 	}
 
